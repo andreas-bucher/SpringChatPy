@@ -1,0 +1,30 @@
+version: 1
+disable_existing_loggers: false
+
+formatters:
+  standard:
+    format: "%(asctime)s %(levelname)s %(name)s:%(lineno)d %(message)s"
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: standard
+    stream: ext://sys.stderr
+
+loggers:
+  __main__:
+    level: DEBUG
+    handlers: [console]
+    propagate: false
+
+  urllib3:             { level: WARNING }
+  fitz:                { level: INFO }
+  httpcore.connection: { level: INFO }
+  httpcore.http11:     { level: INFO }
+  httpx:               { level: INFO }
+  openai._base_client: { level: INFO }
+
+root:
+  level: DEBUG
+  handlers: [console]
