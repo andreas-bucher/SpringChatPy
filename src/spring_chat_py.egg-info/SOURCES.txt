@@ -1,7 +1,0 @@
-pyproject.toml
-src/spring_chat_py/__init__.py
-src/spring_chat_py/__main__.py
-src/spring_chat_py.egg-info/PKG-INFO
-src/spring_chat_py.egg-info/SOURCES.txt
-src/spring_chat_py.egg-info/dependency_links.txt
-src/spring_chat_py.egg-info/top_level.txt
