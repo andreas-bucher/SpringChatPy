@@ -18,12 +18,13 @@ loggers:
     handlers: [console]
     propagate: false
 
+  qdrant_client:       { level: INFO }
+  requests:            { level: WARNING }
   urllib3:             { level: WARNING }
-  fitz:                { level: INFO }
   httpcore.connection: { level: INFO }
   httpcore.http11:     { level: INFO }
-  httpx:               { level: INFO }
-  openai._base_client: { level: INFO }
+  httpx:               { level: WARNING }
+
 
 root:
   level: DEBUG
