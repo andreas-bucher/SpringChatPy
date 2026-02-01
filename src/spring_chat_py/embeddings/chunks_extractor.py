@@ -5,7 +5,7 @@ Created on 30 Jan 2026
 '''
 from __future__ import annotations
 
-import os, sys, re, json
+import os, sys, re, json, uuid
 from typing import List, Dict, Any, Tuple, Optional
 
 import fitz  # PyMuPDF
@@ -301,10 +301,13 @@ def extract_chunks_from_pdf(
             if text:
                 blocks.append(
                     {
-                        "source_file": source_file,
-                        "page": page_index + 1,
-                        "section": current_section,
+                        "id": str(uuid.uuid4()),
                         "text": text,
+                        "metadata" : {
+                            "file": source_file,
+                            "page": page_index + 1,
+                            "section": current_section,    
+                        }
                     }
                 )
             para_lines = []
@@ -327,11 +330,13 @@ def extract_chunks_from_pdf(
                 current_section = t  # section heading for later chunks
                 blocks.append(
                     {
-                        "source_file": source_file,
-                        "page": page_index + 1,
-                        "section": current_section,
-                        "is_heading": True,
+                        "id": str(uuid.uuid4()),
                         "text": t,
+                        "metadata" : {
+                            "file": source_file,
+                            "page": page_index + 1,
+                            "section": current_section,    
+                        }
                     }
                 )
                 prev_y1 = ln["bbox"][3]
