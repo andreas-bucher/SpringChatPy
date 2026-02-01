@@ -26,7 +26,7 @@ OLLAMA_URL = "http://localhost:11434/api/embed"
 
 
 
-def embed_chunks(chunks: List[Dict[str, Any]], model: str = "bge-m3:latest", batch_size: int = 64) -> None:
+def embed_chunks(chunks: List[Dict[str, Any]], model: str = "bge-m3", batch_size: int = 64) -> None:
     log.debug("embed_chunks")
     for b in range(0, len(chunks), batch_size):
         batch = chunks[b : b + batch_size]

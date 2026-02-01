@@ -9,6 +9,7 @@ from spring_chat_py import verify_tool_descriptions
 from spring_chat_py.extract import pdf_outlines
 from spring_chat_py.embeddings import embed_chunks, upsert_emebd_to_qdrant
 from spring_chat_py.embeddings.upsert_emebd_to_qdrant import upload
+from spring_chat_py.embeddings.search import search
 
 log = logging.getLogger(__name__)
 
@@ -37,6 +38,8 @@ def main(argv: list[str] | None = None) -> int:
             embed_chunks.create_embeddings("docs/designing_ai_products_and_services", "rag/embeddings/designing_ai_products_and_services")
         case "upload_chunks":
             upsert_emebd_to_qdrant.upload("designing_ai_products_and_services", "rag/embeddings/designing_ai_products_and_services")
+        case "search":
+            search("designing_ai_products_and_services", "Superminds")
         case _:
             log.error(f"Unknown command: %s", command)
             return 1
