@@ -29,7 +29,7 @@ def search(collection_name: str, query_text: str, model: str = "bge-m3"):
     log.debug(" %s", query_emeddings)
     
     #query_vector = [0.1, 0.2, 0.3, ...]  # your embedding (same dim as collection vectors)
-    
+     
     hits = client.search(
         collection_name=collection_name,
         query_vector=query_emeddings[0],
