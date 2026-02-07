@@ -24,6 +24,7 @@ loggers:
   httpcore.connection: { level: INFO }
   httpcore.http11:     { level: INFO }
   httpx:               { level: WARNING }
+  spring_chat_py.embeddings.embed_chunks:  { level: INFO }
 
 
 root:
