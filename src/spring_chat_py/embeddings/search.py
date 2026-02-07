@@ -15,7 +15,7 @@ OLLAMA_URL = "http://localhost:11434/api/embed"
 client = QdrantClient(url="http://localhost:6333")  # or Qdrant Cloud URL + api_key
  
 
-def search(collection_name: str, query_text: str, model: str = "bge-m3"):
+def search(collection_name: str, query_text: str, top_k: int=3, model: str = "bge-m3"):
     
     payload = {"model": model, "input": query_text}
         #log.debug("payload: %s", payload)
@@ -26,7 +26,7 @@ def search(collection_name: str, query_text: str, model: str = "bge-m3"):
     log.debug("response: %s", resp)
     query_emeddings = resp.json()["embeddings"]
     #log.debug("body: %s", resp.json())
-    log.debug(" %s", query_emeddings)
+    #log.debug(" %s", query_emeddings)
     
     #query_vector = [0.1, 0.2, 0.3, ...]  # your embedding (same dim as collection vectors)
      
@@ -37,7 +37,7 @@ def search(collection_name: str, query_text: str, model: str = "bge-m3"):
         with_payload=True,
     )
     
-    for h in hits:
+    for h in hits[:top_k]:
         log.info("****************************************************************")
         log.info("")
         log.info("id: %s score: %s", h.id, h.score)

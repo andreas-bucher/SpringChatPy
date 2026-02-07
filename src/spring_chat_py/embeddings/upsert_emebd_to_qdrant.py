@@ -42,6 +42,7 @@ def iter_jsonl_points(
     """
     for file_path in sorted(Path(jsonl_dir).glob("*.jsonl")):
         with file_path.open("r", encoding="utf-8") as f:
+            log.info("file: %s", file_path)
             for line_no, line in enumerate(f, start=1):
                 line = line.strip()
                 if not line:
@@ -53,6 +54,7 @@ def iter_jsonl_points(
                     raise ValueError(f"Missing '{id_field}' in {file_path}:{line_no}")
 
                 pid = str(data[id_field])
+                log.info("id_field: %s", pid)
 
                 vec = data.get(vector_field)
                 if vec is None:
@@ -148,4 +150,4 @@ def upload(collection_name: str, in_dir: str):
         batch_size=256
     )
 
-    print("✅ Upload done")
+    log.info("✅ Upload done")

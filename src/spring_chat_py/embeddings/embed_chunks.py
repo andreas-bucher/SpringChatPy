@@ -47,16 +47,18 @@ def embed_chunks(chunks: List[Dict[str, Any]], model: str = "bge-m3", batch_size
     
 
 def create_embeddings(scan_dir: str, embedding_dir: str):
+    log.info("create embeddings")
     if not os.path.isdir(scan_dir):
-        print(f"Scan directory not found: {scan_dir}", file=sys.stderr)
+        log.info(f"Scan directory not found: {scan_dir}", file=sys.stderr)
         sys.exit(2)
     os.makedirs(embedding_dir, exist_ok=True)
-    pdf_files = [
+    
+    pdf_files = sorted(
         f for f in os.listdir(scan_dir)
         if f.lower().endswith(".pdf")
-    ]
+    )
     if not pdf_files:
-        print(f"No PDF files found in {scan_dir}", file=sys.stderr)
+        log.info(f"No PDF files found in {scan_dir}", file=sys.stderr)
         sys.exit(1)
     for pdf_file in pdf_files:
         pdf_path = os.path.join(scan_dir, pdf_file)
@@ -64,7 +66,7 @@ def create_embeddings(scan_dir: str, embedding_dir: str):
             embedding_dir,
             os.path.splitext(pdf_file)[0] + ".jsonl"
         )
-        print(f"Processing {pdf_file} ...")
+        log.info(f"Processing {pdf_file} ...")
         chunks = extract_chunks_from_pdf(pdf_path)
         if not chunks:
             print(f"  ⚠️  No text found in {pdf_file}, skipping")
@@ -76,7 +78,7 @@ def create_embeddings(scan_dir: str, embedding_dir: str):
         with open(out_path, "w", encoding="utf-8") as f:
             for row in chunks:
                 f.write(json.dumps(row, ensure_ascii=False) + "\n")
-        print(f"  ✔ Wrote {len(chunks)} chunks → {out_path}")
-    print("Done.")
+        log.info(f"  ✔ Wrote {len(chunks)} chunks → {out_path}")
+    log.info("Done.")
     
 

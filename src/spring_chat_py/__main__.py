@@ -5,11 +5,13 @@ Created on 28 Jan 2026
 '''
 import sys, yaml
 import logging.config
+from pathlib import Path
 from spring_chat_py import verify_tool_descriptions
 from spring_chat_py.extract import pdf_outlines
 from spring_chat_py.embeddings import embed_chunks, upsert_emebd_to_qdrant
 from spring_chat_py.embeddings.upsert_emebd_to_qdrant import upload
 from spring_chat_py.embeddings.search import search
+from spring_chat_py.designing_ai.extract_designing_ai3 import create_extracts
 
 log = logging.getLogger(__name__)
 
@@ -38,8 +40,28 @@ def main(argv: list[str] | None = None) -> int:
             embed_chunks.create_embeddings("docs/designing_ai_products_and_services", "rag/embeddings/designing_ai_products_and_services")
         case "upload_chunks":
             upsert_emebd_to_qdrant.upload("designing_ai_products_and_services", "rag/embeddings/designing_ai_products_and_services")
+        
         case "search":
             search("designing_ai_products_and_services", "Superminds")
+            #search("designing_ai_products_and_services", "Summary of Module 1")
+        
+        case "search_2":
+            search("designing_ai_products_and_services_2", "Superminds")
+            #search("designing_ai_products_and_services", "Summary of Module 1")
+        
+        case "create_collection":
+            log.info("create collection: designing_ai_products_and_services")
+            emb_dir = "rag/embeddings/designing_ai_products_and_services"
+            [p.unlink() for p in Path(emb_dir).iterdir() if p.is_file()]
+            embed_chunks.create_embeddings("docs/designing_ai_products_and_services", emb_dir)
+            upsert_emebd_to_qdrant.upload("designing_ai_products_and_services", emb_dir)
+        
+        case "designing_ai":
+            log.info("designing_ai")
+            emb_dir = "rag/embeddings/designing_ai_products_and_services_2"
+            create_extracts("docs/designing_ai_products_and_services", emb_dir)
+            upsert_emebd_to_qdrant.upload("designing_ai_products_and_services_2", emb_dir)
+            
         case _:
             log.error(f"Unknown command: %s", command)
             return 1
