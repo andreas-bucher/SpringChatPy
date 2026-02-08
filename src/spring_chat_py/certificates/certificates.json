@@ -1,0 +1,81 @@
+
+[{ 
+  "id" : "1",
+  "Short-Name" : "MAS MTEC ETH",
+  "Name" : "Master of advanced studies ETH in Management, Technology, and Economics/BWI",
+  "Department" : "Management, Technologie und Ökonomie",
+  "University" : "Swiss Federal Institute of Technology Zürich",
+  "Issued" : "Zürich, 2. November 2006"
+},
+{ 
+  "id" : "2",
+  "Short-Name" : "EMBA MTEC ETH",
+  "Name" : "Executive Master of Business Administration in Management, Technology, and Economics (EMBA MTEC)",
+  "Department" : "Management, Technologie und Ökonomie",
+  "University" : "Swiss Federal Institute of Technology Zürich",
+  "Issued" : "Zürich, 2. November 2006"  
+},
+{
+  "id" : "3",
+  "Short-Name" : "Dipl. Bau-Ing. ETHZ",
+  "Name" : "Master of Science in Civil Engineering",
+  "Department" : "Bau, Umwelt und Geomatik",
+  "University" : "Swiss Federal Institute of Technology Zürich",
+  "Issued" : "Zürich, 12. November 2001"
+},
+{ 
+  "id" : "4",
+  "Short-Name" : "Leadership & Innovation",
+  "Name" : "MIT Leadership & Innovation",
+  "Department" : "MIT Professional Education",
+  "University" : "Massachusetts Institute of Technology",
+  "Issued" : "Zürich, 9. July - 3. September 2024"
+},
+{
+  "id" : "5",
+  "Short-Name" : "Designing and Building AI Products and Services",
+  "Name" : "Designing and Building AI Products and Services",
+  "Department" : "MIT xPRO",
+  "University" : "Massachusetts Institute of Technology",
+  "Issued" : "April 2025"
+},
+{ 
+  "id" : "6",
+  "Short-Name" : "Mastering Design Thinking",
+  "Name" : "Mastering Design Thinking",
+  "Department" : "Sloan School of Management",
+  "University" : "Massachusetts Institute of Technology",
+  "Issued" : "July 2021"
+},
+{
+  "id" : "7",
+  "Short-Name" : "CAS ETH in Pharmaceuticals - From Research to Market",
+  "Name" : "CAS ETH in Pharmaceuticals - From Research to Market",
+  "Department" : "Chemistry and Applied Biosciences",
+  "University" : "Swiss Federal Institute of Technology Zürich",
+  "Issued" : "Zurich, 23, January 2018"
+},
+{ 
+  "id" : "8",
+  "Short-Name" : "Inspirational Leadership Program",
+  "Name" : "Inspirational Leadership Program",
+  "Department" : "IMD",
+  "University" : "IMD",
+  "Issued" : "October 29 - December 23, 2018"
+},
+{
+  "id" : "9",
+  "Short-Name" : "Advanced Leadership",
+  "Name" : "Advanced Leadership",
+  "Department" : "IMD",
+  "University" : "IMD",
+  "Issued" : "03 Novemeber 2025 - 07 December 2025"
+},
+{ 
+  "id" : "10",
+  "Short-Name" : "Digital Disruption Program",
+  "Name" : "Digital Disruption Program",
+  "Department" : "IMD",
+  "University" : "IMD",
+  "Issued" : "October 12 - December 6, 2020"
+}]
